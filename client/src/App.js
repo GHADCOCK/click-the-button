@@ -6,15 +6,18 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    // Fetch data from the server
     const fetchMessage = async () => {
       try {
-        console.log("ATTEMPT");
+        console.log("Attempting to fetch message...");
         const response = await fetch(
           "https://click-the-button.onrender.com/api/message"
-        ); // Update with your server's port
-        console.log("Success!");
-        const data = await response.json();
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json(); // This line will throw an error if the response is HTML
         setMessage(data.message);
       } catch (error) {
         console.error("Error fetching message:", error);

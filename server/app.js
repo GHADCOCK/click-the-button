@@ -16,7 +16,7 @@ app.get("/api/message", (req, res) => {
 });
 
 // Serve static files from the React app's build directory
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "../../client/build")));
 
 // Catch-all handler for any request that doesn't match an API route
 app.get("*", (req, res) => {

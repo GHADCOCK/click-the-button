@@ -1,23 +1,30 @@
 import logo from "./logo.svg";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    // Fetch data from the server
+    const fetchMessage = async () => {
+      try {
+        console.log("ATTEMPT");
+        const response = await fetch("http://10.14.0.2:3000/api/message"); // Update with your server's port
+        console.log("Success!");
+        const data = await response.json();
+        setMessage(data.message);
+      } catch (error) {
+        console.error("Error fetching message:", error);
+      }
+    };
+
+    fetchMessage();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React ya
-        </a>
-      </header>
+      <h1>Click the Button</h1>
+      <p>Message from Server: {message}</p>
     </div>
   );
 }

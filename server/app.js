@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "../../client/build")));
 
 // Catch-all handler for any request that doesn't match an API route
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+  res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
 });
 
 // Start server

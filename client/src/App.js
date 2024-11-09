@@ -10,7 +10,9 @@ function App() {
     const fetchMessage = async () => {
       try {
         console.log("ATTEMPT");
-        const response = await fetch("http://10.14.0.2:3000/api/message"); // Update with your server's port
+        const response = await fetch(
+          "https://click-the-button.onrender.com/api/message"
+        ); // Update with your server's port
         console.log("Success!");
         const data = await response.json();
         setMessage(data.message);

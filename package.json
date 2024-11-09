@@ -4,11 +4,11 @@
     "concurrently": "^9.1.0"
   },
   "scripts": {
-    "start": "node server/app.js",
+    "start": "node server/server.js",
     "client": "npm start --prefix client",
-    "server": "node server/app.js",
+    "server": "node server/server.js",
     "dev": "concurrently \"npm run server:dev\" \"npm run client\"",
-    "server:dev": "nodemon server/app.js",
+    "server:dev": "nodemon server/server.js",
     "postinstall": "npm install --prefix server && npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
